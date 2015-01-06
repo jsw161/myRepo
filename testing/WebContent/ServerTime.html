@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>으아악</title>
+<script type="text/javascript">
+	var xmlHttp;
+	function srvTime() {
+		try {
+			xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+		} catch (exception) {
+			try {
+				xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+			} catch (exception) {
+				xmlHttp = new XMLHttpRequest();
+			}
+		}
+
+		xmlHttp.open('HEAD', 'http://sugang.korea.ac.kr', false);
+		xmlHttp.setRequestHeader("Content-Type", "text/html");
+		xmlHttp.send('');
+		var date = new Date(xmlHttp.getResponseHeader("Date"));
+		document.body.innerHTML = "현재 시간은 " + date.toLocaleString();
+
+	}
+	setInterval("srvTime();", 1000);
+</script>
+</head>
+<body onload="srvTime();">
+</body>
+</html>
